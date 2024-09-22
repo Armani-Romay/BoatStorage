@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --primaryColor: hsl(14, 90%, 53%);
+  --primaryColorLight: hsl(14, 96%, 91%);
+  --bgColor: hsl(0,0%,100%);
+  --formColor: hsl(20,42%,87%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --greyText: hsl(0, 0%, 51%);
+  --inputColor: hsl(330, 12%, 97%);
+  --cardColor: hsl(300, 3, 94%);
+  /* Font ang Typography*/
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 2rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: 0.938rem;
+  --smallFontSize: 0.813rem;
+  --smallestFontSize: 0.75rem;
+  --borderRadius: 3rem;
+}
+
+.portfolio .sectionContainer {
+  gap: 2rem;
+  display: grid;
+  grid-template-columns: 1fr; /* Default to a single column */
+}
+.portfolio .sectionContainer .leftContent .sectionHeading {
+  color: var(--blackColor);
+}
+.portfolio .sectionContainer .leftContent .grid {
+  color: var(--blackColor);
+}
+.portfolio .sectionContainer .leftContent .grid .singlePortfolio {
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 0.5rem;
+}
+.portfolio .sectionContainer .leftContent .grid .singlePortfolio .iconDiv img {
+  height: 50px;
+  width: 50px;
+}
+.portfolio .sectionContainer .leftContent .grid .singlePortfolio .information h4 {
+  padding-bottom: 0.5rem;
+}
+.portfolio .sectionContainer .rightContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.portfolio .sectionContainer .rightContent img {
+  max-width: 80%; /* Ensure the image doesn't overflow */
+  height: 500px;
+  border-radius: var(--borderRadius);
+}
+
+@media screen and (min-width: 480px) {
+  .portfolio .sectionContainer .leftContent .sectionHeading h3 {
+    font-size: var(--h2FontSize);
+  }
+  .portfolio .sectionContainer .leftContent .sectionHeading p {
+    padding: 0.5rem 0;
+    font-size: var(--normalFontSize);
+  }
+  .portfolio .sectionContainer .leftContent .grid .singlePortfolio {
+    gap: 1.5rem;
+  }
+  .portfolio .sectionContainer .leftContent .grid .singlePortfolio .iconDiv img {
+    height: 60px;
+    width: 60px;
+  }
+  .portfolio .sectionContainer .leftContent .grid .singlePortfolio .information {
+    padding-bottom: 0.5rem;
+    font-size: var(--h3FontSize);
+  }
+}
+@media screen and (min-width: 660px) {
+  .portfolio .sectionContainer .leftContent .sectionHeading h3 {
+    font-size: 2rem;
+  }
+  .portfolio .sectionContainer .leftContent .sectionHeading p {
+    font-size: var(--h3FontSize);
+  }
+  .portfolio .sectionContainer .leftContent .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .portfolio .sectionContainer .leftContent .grid .singlePortfolio {
+    gap: 1.5rem;
+    display: flex;
+  }
+  .portfolio .sectionContainer .rightContent {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .portfolio .sectionContainer .rightContent img {
+    margin: auto;
+    max-width: 80%;
+  }
+}
+@media screen and (min-width: 820px) {
+  .portfolio .sectionContainer {
+    grid-template-columns: repeat(2, 1fr); /* Change to two columns */
+  }
+  .portfolio .sectionContainer .leftContent .sectionHeading h3 {
+    font-size: var(--h2FontSize);
+  }
+  .portfolio .sectionContainer .leftContent .sectionHeading p {
+    font-size: var(--h3FontSize);
+  }
+  .portfolio .sectionContainer .leftContent .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .portfolio .sectionContainer .leftContent .grid .singlePortfolio {
+    gap: 1.5rem;
+  }
+  .portfolio .sectionContainer .rightContent img {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1240px) {
+  .portfolio .sectionContainer {
+    gap: 3rem;
+  }
+  .portfolio .sectionContainer .leftContent .sectionHeading h3 {
+    font-size: 2rem;
+  }
+  .portfolio .sectionContainer .leftContent .sectionHeading p {
+    font-size: var(--h3FontSize);
+  }
+  .portfolio .sectionContainer .leftContent .grid {
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+  .portfolio .sectionContainer .leftContent .grid .singlePortfolio {
+    gap: 2rem;
+  }
+}/*# sourceMappingURL=Portfolio.css.map */

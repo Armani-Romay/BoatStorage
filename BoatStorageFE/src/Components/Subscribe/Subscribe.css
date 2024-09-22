@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --primaryColor: hsl(14, 90%, 53%);
+  --primaryColorLight: hsl(14, 96%, 91%);
+  --bgColor: hsl(0, 0%, 100%);
+  --formColor: hsl(20, 42%, 87%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --greyText: hsl(0, 0%, 51%);
+  --inputColor: hsl(330, 12%, 97%);
+  --cardColor1: hsl(14, 25%, 90%);
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 2rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: 0.938rem;
+  --smallFontSize: 0.813rem;
+  --smallestFontSize: 0.75rem;
+  --borderRadius: 3rem;
+}
+
+.subscribe .sectionContainer {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.subscribe .imageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.subscribe .imageContainer video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: var(--borderRadius);
+}
+.subscribe .textDiv {
+  position: relative;
+  z-index: 1;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px); /* Adjust the blur amount as needed */
+  background-color: rgba(255, 255, 255, 0.6); /* Adjust the opacity as needed */
+  padding: 2rem;
+  border-radius: var(--borderRadius);
+  text-align: center;
+}
+.subscribe .textDiv h4 {
+  font-size: var(--h2FontSize);
+  color: var(--blackColor);
+}
+.subscribe .textDiv p {
+  padding: 1rem 0;
+  color: var(--blackColor);
+}
+.subscribe .textDiv .btn {
+  padding: 0.5rem 2rem;
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
+  border: none;
+  border-radius: var(--borderRadius);
+  cursor: pointer;
+}
+.subscribe .textDiv .btn:hover {
+  background: var(--primaryColorLight);
+  color: var(--blackColor);
+  transform: scale(110%);
+  transition: 0.3s ease-in-out;
+}
+
+@media screen and (min-width: 480px) {
+  .subscribe .sectionContainer .textDiv {
+    max-width: 85%;
+  }
+  .subscribe .sectionContainer .textDiv h4 {
+    font-size: 1.5rem;
+  }
+  .subscribe .sectionContainer .textDiv p {
+    padding: 1rem 0;
+    font-size: var(--h3FontSize);
+  }
+  .subscribe .sectionContainer .textDiv .btn {
+    padding: 0.5rem 2rem;
+    font-size: var(--h2FontSize);
+  }
+}
+@media screen and (min-width: 640px) {
+  .subscribe .sectionContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .subscribe .textDiv h4 {
+    font-size: 2rem;
+  }
+  .subscribe .textDiv p {
+    padding: 1rem 0;
+    font-size: var(--h3FontSize);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .subscribe .sectionContainer .textDiv h4 {
+    font-size: var(--h1FontSize);
+  }
+  .subscribe .sectionContainer .textDiv p {
+    padding: 2rem 0;
+  }
+}/*# sourceMappingURL=Subscribe.css.map */

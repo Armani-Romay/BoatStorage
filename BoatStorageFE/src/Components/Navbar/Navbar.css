@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --primaryColor: hsl(14, 90%, 53%);
+  --primaryColorLight: hsl(14, 96%, 91%);
+  --bgColor: hsl(0,0%,100%);
+  --formColor: hsl(20,42%,87%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --greyText: hsl(0, 0%, 51%);
+  --inputColor: hsl(330, 12%, 97%);
+  --cardColor: hsl(300, 3, 94%);
+  /* Font ang Typography*/
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 2rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: 0.938rem;
+  --smallFontSize: 0.813rem;
+  --smallestFontSize: 0.75rem;
+  --borderRadius: 3rem;
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  position: fixed;
+  border-bottom: 1.5px solid whitesmoke;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.737);
+}
+.navBar .btn:hover {
+  background-color: beige;
+}
+.navBar .logoDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navBar .logoDiv .menu .navlist {
+  color: var(--blackColor) !important;
+}
+.navBar .logoDiv span {
+  color: var(--blackColor);
+  font-size: var(--h3FontSize);
+  font-weight: 600;
+  justify-content: center;
+}
+@media screen and (max-width: 767px) {
+  .navBar .menu {
+    position: absolute;
+    width: 70%;
+    top: -100rem;
+    right: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    background: rgba(255, 255, 255, 0.94);
+    padding: 2rem;
+    border-radius: 10px;
+    transition: 0.8s ease-in-out;
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+    box-shadow: 0 2px 3px 4px rgba(236, 213, 213, 0.516);
+  }
+  .navBar .menu li {
+    font-size: var(--h3FontSize);
+    font-weight: 500;
+    padding: 1rem 0;
+    text-align: center;
+    cursor: pointer;
+    color: var(--blackColor);
+  }
+  .navBar .menu li:hover {
+    color: var(--primaryColor);
+    border-bottom: 1.5px solid var(--primaryColor);
+  }
+}
+.navBar .menuIcon, .navBar .closeIcon {
+  font-size: var(--h1FontSize);
+}
+.navBar .menuIcon:hover, .navBar .closeIcon:hover {
+  color: var(--primaryColor);
+}
+.navBar .closeIcon {
+  position: absolute;
+  bottom: -15px;
+  right: 50%;
+  left: 50%;
+  color: var(--blackColor);
+  transform: translate(-50%);
+}
+.navBar .showNavBar {
+  top: 8rem;
+}
+
+@media screen and (min-width: 768px) {
+  .navBar .logoDiv span {
+    font-size: var(--h2FontSize);
+  }
+  .navBar .closeIcon, .navBar .menuIcon {
+    display: none;
+  }
+  .navBar .menu ul {
+    display: flex;
+    gap: 1rem;
+  }
+  .navBar .menu li {
+    font-size: var(--h3FontSize);
+    font-weight: 500;
+    padding: 1rem 0;
+    text-align: center;
+    cursor: pointer;
+    color: var(--blackColor);
+  }
+  .navBar .menu li:hover {
+    color: var(--primaryColor);
+    border-bottom: 1.5px solid var(--primaryColor);
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 1240px) {
+  .navBar {
+    padding: 2rem 6rem;
+  }
+  .navBar .menu ul {
+    color: var(--blackColor);
+    gap: 4rem;
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 1440px) {
+  .navBar {
+    padding: 2rem 14rem;
+  }
+}/*# sourceMappingURL=Navbar.css.map */

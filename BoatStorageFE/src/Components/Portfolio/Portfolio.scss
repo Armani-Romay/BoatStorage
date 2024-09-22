@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+//All Project Colors
+:root{
+    --primaryColor: hsl(14, 90%, 53%);
+    --primaryColorLight: hsl(14, 96%, 91%);
+    --bgColor: hsl(0,0%,100%);
+    --formColor: hsl(20,42%,87%);
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(0, 0%, 18%);
+    --greyText: hsl(0, 0%, 51%);
+    --inputColor: hsl(330, 12%, 97%);
+    --cardColor: hsl(300, 3, 94%);
+
+    /* Font ang Typography*/
+    --biggestFontSize: 2.5rem;
+    --h1FontSize: 2rem;
+    --h2FontSize: 1.25rem;
+    --h3FontSize: 1rem;
+    --normalFontSize: 0.938rem;
+    --smallFontSize: 0.813rem;
+    --smallestFontSize: 0.75rem;
+    --borderRadius: 3rem;
+}
+
+.portfolio{
+    .sectionContainer{
+        gap: 2rem;
+        display: grid; 
+        grid-template-columns: 1fr; /* Default to a single column */
+
+
+        .leftContent{
+
+            .sectionHeading{
+                color: var(--blackColor);
+            }
+
+            .grid{
+                
+                color: var(--blackColor);
+
+                .singlePortfolio{
+                    gap: 1rem;
+                    align-items: flex-start;
+                    padding: .5rem;
+                    
+
+                    .iconDiv{
+                        img{
+                            height: 50px;
+                            width: 50px;
+                        }
+                    }
+
+                    .information{
+                        h4{
+                            padding-bottom: 0.5rem;
+                        }
+                    }
+                }
+            }
+        }
+        .rightContent {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+                max-width: 80%; /* Ensure the image doesn't overflow */
+                height: 500px;
+                border-radius: var(--borderRadius);
+            }
+        }
+    }
+}
+
+
+//media queries
+
+@media screen and (min-width: 480px){
+    .portfolio{
+        .sectionContainer{
+            .leftContent{
+                .sectionHeading{
+                    h3{
+                        font-size: var(--h2FontSize);
+                    }
+                    p{
+                        padding: .5rem 0;
+                        font-size: var(--normalFontSize);
+
+                    }
+                }
+                
+                .grid{
+                    .singlePortfolio{
+                        gap: 1.5rem;
+
+                        .iconDiv{
+                            img{
+                                height: 60px;
+                                width: 60px;
+                            }
+                        }
+
+                        .information{
+                            padding-bottom: .5rem;
+                            font-size: var(--h3FontSize);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 660px){
+    .portfolio{
+        .sectionContainer{
+            .leftContent{
+                .sectionHeading{
+                    h3{
+                        font-size: 2rem;
+    
+                    }
+
+                    p{
+                        font-size: var(--h3FontSize);
+                    }
+                }
+                
+                .grid{
+                    grid-template-columns: repeat(2,1fr);
+
+                    .singlePortfolio{
+                        gap: 1.5rem;
+                        display: flex;
+                    }
+                }
+            }
+            .rightContent{
+                margin: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img{
+                    margin: auto;
+                    max-width: 80%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 820px){
+    .portfolio{
+        .sectionContainer{
+            grid-template-columns: repeat(2, 1fr); /* Change to two columns */
+
+            .leftContent{
+                .sectionHeading{
+                    h3{
+                        font-size: var(--h2FontSize);
+                    }
+                    p{
+                        font-size: var(--h3FontSize);
+                    }
+                }
+
+                .grid{
+                    grid-template-columns: repeat(1,1fr);
+                    .singlePortfolio{
+                        gap: 1.5rem;
+                    }
+                }
+            }
+
+            .rightContent{
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1240px){
+    .portfolio{
+        .sectionContainer{
+            gap: 3rem;
+
+            .leftContent{
+                .sectionHeading{
+                    h3{
+                        font-size: 2rem;
+                    }
+                    p{
+                        font-size: var(--h3FontSize);
+                    }
+                }
+
+                .grid{
+                    gap: 2.5rem;
+                    margin-top: 3rem;
+
+                    .singlePortfolio{
+                        gap: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}
