@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'accounts',
-    'frontend',
+    'home',
 
 ]
 
@@ -66,7 +66,7 @@ ROOT_URLCONF = 'BoatStorageBE.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'frontend/build')], #used to connect to the frontend build files
+        'DIRS': [os.path.join(BASE_DIR, 'home')], #used to connect to the frontend build files
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,9 +129,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticfiles'),  # Path to React static files
+    os.path.join(BASE_DIR, 'static'),  # Path to React static files
 ]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Location where static files will be collected
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Location where static files will be collected
 
 
 # Default primary key field type

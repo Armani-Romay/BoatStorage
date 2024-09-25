@@ -24,9 +24,8 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name = "index.html"), name="home"),
+    path('', include('home.urls')),
     path('admin/', admin.site.urls),
-    # path('', ReactView.as_view(), name="anything"),
     path('accounts/', include('accounts.urls'))
     
     
