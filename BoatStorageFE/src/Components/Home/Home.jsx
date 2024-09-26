@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react'
+import { Link } from 'react-router-dom';
 import './Home.css'
 
 //imported assets
@@ -32,9 +33,11 @@ const Home = () => {
                 <p data-aos="fade-up">
                     A Space for Boats, RV's, and Personal Vehicles
                 </p>
-                <button className="btn flex" data-aos="fade-up">
-                    GET STARTED <AiOutlineSwapRight className="icon"/>
-                </button>
+                <Link to="/signup">
+                    <button className="btn flex" data-aos="fade-up">
+                        GET STARTED <AiOutlineSwapRight className="icon"/>
+                    </button>
+                </Link>
         </div>
 
         <div className="popularPlaces">

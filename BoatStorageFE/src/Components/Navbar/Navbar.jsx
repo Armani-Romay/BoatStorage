@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom';
 import './Navbar.css'
 
 // Imported Icons
@@ -39,7 +40,10 @@ const Navbar = () => {
                 <AiFillCloseCircle className="icon closeIcon"
                 onClick={removeNavBar}/>
             </div>
-            <button className="signUpBtn btn">Sign Up</button>
+            <Link to="/signup">
+                <button className="signUpBtn btn">Sign Up</button>
+            </Link>
+            
             {/* Icon to toggle Navbar */}
             <PiDotsNineBold className="icon menuIcon"
             onClick={showNavBar}/>

@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import './Subscribe.css';
 import image1 from "../../Assets/Sub.jpg";
 import video1 from "../../Assets/Load.mov"
@@ -26,7 +27,9 @@ const Subscribe = () => {
                         If you'd like to hear more, have any questions,
                         or would like to get a quote, let's get things rolling.
                     </p>
-                    <button className="btn" data-aos="fade-up">Get Started</button>
+                    <Link to="/signup">
+                        <button className="btn" data-aos="fade-up">Get Started</button>
+                    </Link>
                 </div>
             </div>
         </div>
