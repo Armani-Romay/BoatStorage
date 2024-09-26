@@ -24,9 +24,10 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', include('home.urls')),
-    path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls'))
+    #catches the default url 
+    # path('', include('home.urls')),
+    path('admin/', admin.site.urls), # admin page
+    path('api/', include("accounts.urls")), # goes to account url configurations
     
     
 ]+ static (settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,11 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'app',
     'rest_framework',
     'corsheaders',
     'accounts',
     'home',
+
+
+    'rest_framework_simplejwt.token_blacklist',
 
 ]
 
@@ -57,9 +62,17 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.AllowAny']}
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),        
+}
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
 
 ROOT_URLCONF = 'BoatStorageBE.urls'
 
@@ -129,7 +142,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Path to React static files
+    BASE_DIR / 'static'
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Location where static files will be collected
 
@@ -138,3 +151,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Location where static fil
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),  # Set token expiration to 5 minutes
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),    # Refresh token valid for 7 days
+    'ROTATE_REFRESH_TOKENS': True,                 # Automatically issue new refresh tokens
+    'BLACKLIST_AFTER_ROTATION': True,              # Blacklist old refresh tokens after rotation
+    'AUTH_HEADER_TYPES': ('Bearer',),              # Expect "Bearer" keyword before tokens
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_USER_CLASS': 'yourapp.models.CustomUser', # Specify your custom user model if any
+}
