@@ -1,28 +1,20 @@
-import './App.css'
-import Navbar from "./Components/Navbar/Navbar"
-import Destinations from "./Components/Destinations/Destinations"
-import Home from "./Components/Home/Home"
-import Middle from "./Components/Middle/Middle"
-import Portfolio from "./Components/Portfolio/Portfolio"
-import Questions from "./Components/Questions/Questions"
-import Reviews from "./Components/Reviews/Reviews"
-import Subscribe from "./Components/Subscribe/Subscribe"
-import Footer from "./Components/Footer/Footer"
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from "./HomePage/HomePage"; 
+// import SignUp from './Components/SignUp'; // sign-up page component
+
 
 
 function App() {
   return (
     <div>
-      <Navbar/>
-      <Home/>
-      <Middle/>
-      <Destinations/>
-      <Portfolio/>
-      <Reviews/>
-      <Questions/>
-      <Subscribe/>
-      <Footer/>
+        <Routes>
+          <Route index element={<HomePage/>} />
+          {/* <Route path="/signup" element={<SignUp />} /> Use 'element' for route rendering */}
+        </Routes>
     </div>
+
   );
-};
-export default App
+}
+
+export default App;
