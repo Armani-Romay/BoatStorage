@@ -28,7 +28,7 @@ const Subscribe = () => {
                         or would like to get a quote, let's get things rolling.
                     </p>
                     <Link to="/signup">
-                        <button className="btn" data-aos="fade-up">Get Started</button>
+                        <button className="btn" data-aos="fade-up">Sign Up</button>
                     </Link>
                 </div>
             </div>

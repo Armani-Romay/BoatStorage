@@ -41,7 +41,7 @@ const Navbar = () => {
                 onClick={removeNavBar}/>
             </div>
             <Link to="/signup">
-                <button className="signUpBtn btn">Sign Up</button>
+                <button className="signUpBtn btn">Login</button>
             </Link>
             
             {/* Icon to toggle Navbar */}

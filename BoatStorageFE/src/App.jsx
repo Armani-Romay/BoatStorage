@@ -4,7 +4,6 @@ import HomePage from "./HomePage/HomePage";
 import SignUp from './Components/SignUp/SignUp'; // sign-up page component
 
 
-
 function App() {
   return (
     <div>

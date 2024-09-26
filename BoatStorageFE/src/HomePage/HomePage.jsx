@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react'
 import './HomePage.css';
 import Navbar from "../Components/Navbar/Navbar"
 import Destinations from "../Components/Destinations/Destinations"
@@ -10,7 +10,7 @@ import Reviews from "../Components/Reviews/Reviews"
 import Subscribe from "../Components/Subscribe/Subscribe"
 import Footer from "../Components/Footer/Footer"
 
-function HomePage() {
+const HomePage=()=> {
   return (
     <div>
       <Navbar/>
