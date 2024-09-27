@@ -158,8 +158,8 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,                 # Automatically issue new refresh tokens
     'BLACKLIST_AFTER_ROTATION': True,              # Blacklist old refresh tokens after rotation
     'AUTH_HEADER_TYPES': ('Bearer',),              # Expect "Bearer" keyword before tokens
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    'TOKEN_USER_CLASS': 'yourapp.models.CustomUser', # Specify your custom user model if any
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken', 'rest_framework_simplejwt.tokens.RefreshToken'),
+    # 'TOKEN_USER_CLASS': 'accounts.models.CustomUser', # Specify your custom user model if any
 }
 
 AUTH_USER_MODEL = 'accounts.CustomUser'

@@ -12,6 +12,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.middleware.csrf import get_token
 from django.utils.decorators import method_decorator
 import logging
+from .models import CustomUser
 logger = logging.getLogger(__name__)
 
 
@@ -26,8 +27,8 @@ class UserRegistrationApiView(GenericAPIView):
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data= request.data)
         serializer.is_valid(raise_exception = True)
-        user = serializer.save()
-        token = RefreshToken.for_user(user)
+        custom_user = serializer.save()  # Change this line
+        token = RefreshToken.for_user(custom_user)
         data = serializer.data
         csrf_token = get_token(request)
         data["tokens"] = {"refresh": str(token),
