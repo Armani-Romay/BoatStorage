@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 :root {
   --primaryColor: hsl(14, 90%, 53%);
-  --primaryColorLight: hsl(14, 74%, 73%);
+  --primaryColorLight: hsl(14, 96%, 91%);
   --bgColor: hsl(0, 0%, 100%);
   --formColor: hsl(20, 42%, 87%);
   --whiteColor: hsl(0, 0%, 100%);
@@ -33,7 +33,7 @@ body {
   background-color: var(--bgColor);
 }
 
-.signup-wrapper {
+.login-wrapper {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -42,7 +42,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-.signup-wrapper video {
+.login-wrapper video {
   position: absolute;
   top: 0;
   left: 0;
@@ -53,7 +53,7 @@ body {
   filter: blur(8px);
   z-index: -1;
 }
-.signup-wrapper .signup-container {
+.login-wrapper .login-container {
   position: relative;
   z-index: 1;
   background-color: rgba(255, 255, 255, 0.9);
@@ -63,33 +63,31 @@ body {
   width: 100%;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
-  align-items: center;
 }
-.signup-wrapper .signup-container header {
+.login-wrapper .login-container header {
   font-size: var(--h1FontSize);
   font-weight: 900;
   margin-bottom: 20px;
   color: var(--blackColor);
 }
-.signup-wrapper .signup-container .loginLink {
+.login-wrapper .login-container .signUpLink {
   padding-bottom: 20px;
 }
-.signup-wrapper .signup-container .loginLink h3 {
-  color: var(--blackColor);
+.login-wrapper .login-container .signUpLink h3 {
   padding-bottom: 5px;
 }
-.signup-wrapper .signup-container .loginLink h4 {
+.login-wrapper .login-container .signUpLink h4 {
   color: var(--primaryColor);
 }
-.signup-wrapper .signup-container .loginLink h4:hover {
+.login-wrapper .login-container .signUpLink h4:hover {
   transform: scale(110%);
 }
-.signup-wrapper .signup-container form .input-field {
+.login-wrapper .login-container form .input-field {
   margin-bottom: 20px;
   position: relative;
   width: 100%;
 }
-.signup-wrapper .signup-container form .input-field input {
+.login-wrapper .login-container form .input-field input {
   width: 100%;
   padding: 12px 15px;
   border: 1px solid #d1d1d1;
@@ -98,13 +96,13 @@ body {
   font-family: var(--fontFamily);
   outline: none;
 }
-.signup-wrapper .signup-container form .input-field input::-moz-placeholder {
+.login-wrapper .login-container form .input-field input::-moz-placeholder {
   color: var(--greyText);
 }
-.signup-wrapper .signup-container form .input-field input::placeholder {
+.login-wrapper .login-container form .input-field input::placeholder {
   color: var(--greyText);
 }
-.signup-wrapper .signup-container form .input-field button {
+.login-wrapper .login-container form .input-field button {
   width: 100%;
   padding: 12px;
   background-color: var(--primaryColor);
@@ -115,21 +113,21 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.signup-wrapper .signup-container form .input-field button:disabled {
+.login-wrapper .login-container form .input-field button:disabled {
   background-color: var(--greyText);
   cursor: not-allowed;
 }
-.signup-wrapper .signup-container form .input-field button:hover:not(:disabled) {
+.login-wrapper .login-container form .input-field button:hover:not(:disabled) {
   background-color: var(--primaryColorLight);
   color: var(--primaryColor);
 }
-.signup-wrapper .signup-container form .success-message {
+.login-wrapper .login-container form .success-message {
   margin-top: 15px;
   color: green;
   font-size: var(--normalFontSize);
 }
-.signup-wrapper .signup-container form .error-message {
+.login-wrapper .login-container form .error-message {
   margin-top: 15px;
   color: #d93025;
   font-size: var(--normalFontSize);
-}/*# sourceMappingURL=SignUp.css.map */
+}/*# sourceMappingURL=Login.css.map */

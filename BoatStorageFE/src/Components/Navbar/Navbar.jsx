@@ -40,7 +40,7 @@ const Navbar = () => {
                 <AiFillCloseCircle className="icon closeIcon"
                 onClick={removeNavBar}/>
             </div>
-            <Link to="/signup">
+            <Link to="/login">
                 <button className="signUpBtn btn">Login</button>
             </Link>
             

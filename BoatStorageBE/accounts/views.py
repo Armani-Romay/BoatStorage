@@ -11,6 +11,8 @@ from rest_framework import status
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.middleware.csrf import get_token
 from django.utils.decorators import method_decorator
+import logging
+logger = logging.getLogger(__name__)
 
 
 # handle user registration via API
@@ -22,19 +24,17 @@ class UserRegistrationApiView(GenericAPIView):
     # makes sure CSRF cookie is set in the response when a user registers
     @method_decorator(ensure_csrf_cookie)
     def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        # validate the serializer data (raise an exception if validation fails)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save() # save the valid data and create a new user
-        token = RefreshToken.for_user(user)  # refresh token for the new user
+        serializer = self.get_serializer(data= request.data)
+        serializer.is_valid(raise_exception = True)
+        user = serializer.save()
+        token = RefreshToken.for_user(user)
         data = serializer.data
         csrf_token = get_token(request)
-        # add the tokens (refresh, access, and CSRF) to the response data
         data["tokens"] = {"refresh": str(token),
                           "access": str(token.access_token),
                           'csrfToken': csrf_token}
-        # return the response with the user data and tokens, and set the status to 201 Created
         return Response(data, status=status.HTTP_201_CREATED)
+
 
 # class to handle user login via API
 class UserLoginApiView(GenericAPIView):

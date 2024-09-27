@@ -3,7 +3,7 @@
 // All Project Colors
 :root {
   --primaryColor: hsl(14, 90%, 53%);
-  --primaryColorLight: hsl(14, 74%, 73%);
+  --primaryColorLight: hsl(14, 96%, 91%);
   --bgColor: hsl(0, 0%, 100%);
   --formColor: hsl(20, 42%, 87%);
   --whiteColor: hsl(0, 0%, 100%);
@@ -37,7 +37,7 @@ body {
   background-color: var(--bgColor);
 }
 
-.signup-wrapper {
+.login-wrapper {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -57,7 +57,7 @@ body {
     z-index: -1; // Ensure the video is behind the form
   }
 
-  .signup-container {
+  .login-container {
     position: relative;
     z-index: 1;
     background-color: rgba(255, 255, 255, 0.9); // Semi-transparent background
@@ -67,22 +67,22 @@ body {
     width: 100%;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
-    align-items: center;
 
     header {
       font-size: var(--h1FontSize);
       font-weight: 900;
       margin-bottom: 20px;
       color: var(--blackColor);
+      
     }
 
-    .loginLink{
+    .signUpLink{
         padding-bottom: 20px;
 
         h3{
-            color: var(--blackColor);
             padding-bottom: 5px;
         }
+
         h4{
             color: var(--primaryColor);
 
@@ -91,8 +91,6 @@ body {
             }
         }
     }
-
-    
 
     form {
       .input-field {

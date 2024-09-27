@@ -71,8 +71,8 @@ REST_FRAMEWORK = {
     ),        
 }
 
-# CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
 
 ROOT_URLCONF = 'BoatStorageBE.urls'
 
@@ -161,3 +161,5 @@ SIMPLE_JWT = {
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     'TOKEN_USER_CLASS': 'yourapp.models.CustomUser', # Specify your custom user model if any
 }
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
