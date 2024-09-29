@@ -28,6 +28,8 @@ const SignUp = () => {
     password2: "", 
   });
 
+  const navigate = useNavigate();
+
   // function to handle form field changes, dynamically updating the formData state
   const handleChange = (e) => {
     // extract the name and value from the input field
@@ -55,8 +57,13 @@ const SignUp = () => {
           "Content-Type": 'application/json'
 
         }
+
       });
+
       setSuccessMessage("Successfully Created an Account!"); 
+
+      navigate('/profile');
+
     } catch (error) {
       // if an error occurs, check if the server returned any error messages
       if (error.response && error.response.data) {

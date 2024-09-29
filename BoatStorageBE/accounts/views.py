@@ -119,8 +119,6 @@ class UserDetailsApiView(GenericAPIView):
         serializer = self.get_serializer(request.user)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-
-
 # class Csrf_Token_View(GenericAPIView):
 #     # Permission class restricts access to only authenticated users
 #     permission_classes = (IsAuthenticated, )

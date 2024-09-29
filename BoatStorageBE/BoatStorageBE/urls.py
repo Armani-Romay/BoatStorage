@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.urls import path, include
 from django.urls import re_path
-from app.views import *
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -28,4 +27,5 @@ urlpatterns = [
     # path('', include('home.urls')),
     path('admin/', admin.site.urls), # admin page
     path('api/', include("accounts.urls")), # goes to account url configurations
+    path('chat/', include("chatBot.urls")), # goes to account url configurations
 ]

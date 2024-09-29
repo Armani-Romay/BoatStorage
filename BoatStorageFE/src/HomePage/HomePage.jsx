@@ -9,6 +9,7 @@ import Questions from "../Components/Questions/Questions"
 import Reviews from "../Components/Reviews/Reviews"
 import Subscribe from "../Components/Subscribe/Subscribe"
 import Footer from "../Components/Footer/Footer"
+import ChatBot from "../Components/ChatBot/ChatBot"
 
 const HomePage=()=> {
   return (
@@ -22,6 +23,7 @@ const HomePage=()=> {
       <Questions/>
       <Subscribe/>
       <Footer/>
+      <ChatBot/>
     </div>
   );
 }
