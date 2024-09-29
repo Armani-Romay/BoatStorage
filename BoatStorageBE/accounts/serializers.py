@@ -38,7 +38,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         # remove password2 from the validated data (since it's just for confirmation)
         validated_data.pop("password2")
         # create a new user using the validated data (and set the password correctly)
-        return CustomUser.objects.create_user(password=password, **validated_data)
+        user =  CustomUser.objects.create_user(password=password, **validated_data)
+        return user
 
 # serializer for handling user login
 class UserLoginSerializer(serializers.Serializer):

@@ -1,31 +1,36 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 
-# class for the user
+# Custom manager for the CustomUser model
+class CustomUserManager(BaseUserManager):
+    def create_user(self, email, username, password=None, **extra_fields):
+        if not email:
+            raise ValueError("The Email field must be set")
+        email = self.normalize_email(email)
+        user = self.model(email=email, username=username, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, username, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
+        return self.create_user(email, username, password, **extra_fields)
+
+# CustomUser model
 class CustomUser(AbstractUser):
-    
     email = models.EmailField(unique=True)
-    # required fields, anymore fields would be optional
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username"]
+    USERNAME_FIELD = 'email'  # use email to login
+    REQUIRED_FIELDS = ['username']  # username is required along with email
 
-    def __str__(self) -> str:
+    # Attach the custom manager
+    objects = CustomUserManager()
+
+    def __str__(self):
         return self.email
-    
-    # # add related_name attributes to resolve the reverse accessor conflicts
-    # groups = models.ManyToManyField(
-    #     Group,
-    #     related_name="customuser_set",  # Add this line to avoid clash with auth.User.groups
-    #     blank=True,
-    #     help_text=("The groups this user belongs to. "
-    #                "A user will get all permissions granted to each of "
-    #                "their groups."),
-    #     related_query_name="customuser",
-    # )
-    # user_permissions = models.ManyToManyField(
-    #     Permission,
-    #     related_name="customuser_set",  # add this line to avoid clash with auth.User.user_permissions
-    #     blank=True,
-    #     help_text="Specific permissions for this user.",
-    #     related_query_name="customuser",
-    # )

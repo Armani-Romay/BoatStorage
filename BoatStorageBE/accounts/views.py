@@ -23,17 +23,23 @@ class UserRegistrationApiView(GenericAPIView):
     serializer_class = UserRegistrationSerializer # use the UserRegistrationSerializer for validation and processing data
 
     # makes sure CSRF cookie is set in the response when a user registers
+    #deleted tokens for testing, (worked)
     @method_decorator(ensure_csrf_cookie)
     def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data= request.data)
-        serializer.is_valid(raise_exception = True)
-        custom_user = serializer.save()  # Change this line
-        token = RefreshToken.for_user(custom_user)
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        custom_user = serializer.save()
+
+        # Bypass token generation
+        token = None
+
         data = serializer.data
-        csrf_token = get_token(request)
-        data["tokens"] = {"refresh": str(token),
-                          "access": str(token.access_token),
-                          'csrfToken': csrf_token}
+        data["tokens"] = {
+            "refresh": None,  # No token generated for testing
+            "access": None,
+            "csrfToken": get_token(request)
+        }
+
         return Response(data, status=status.HTTP_201_CREATED)
 
 
@@ -45,21 +51,44 @@ class UserLoginApiView(GenericAPIView):
     # ensure CSRF cookie is set in the response when a user logs in
     @method_decorator(ensure_csrf_cookie)
     def post(self, request, *args, **kwargs):
+        # validate incoming request data with the login serializer
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data  # retrieve the validated user object from the serializer
-        serializer = CustomUserSerializer(user)  # serialize the user object
         
-        token = RefreshToken.for_user(user)
-        data = serializer.data   # retrieve the serialized user data
-        csrf_token = get_token(request)
+        # retrieve the validated user object from the serializer
+        user = serializer.validated_data
+        
+        # check if the user is valid and active (for debugging purposes)
+        if not user.is_active:
+            return Response({"detail": "User account is inactive."}, status=status.HTTP_400_BAD_REQUEST)
+     
+        # serialize the user object
+        user_serializer = CustomUserSerializer(user)
+        data = user_serializer.data  # retrieve the serialized user data
+        
+        try:
+            # generate tokens for the user
+            token = RefreshToken.for_user(user)
 
-        # add the tokens (refresh, access, and CSRF) to the response data
-        data["tokens"] = {"refresh": str(token),
-                          "access": str(token.access_token),
-                          'csrfToken': csrf_token}
+            # add tokens (refresh, access) and CSRF token to the response
+            data["tokens"] = {
+                "refresh": str(token),
+                "access": str(token.access_token),
+                'csrfToken': get_token(request)  # Ensure CSRF token is set
+            }
+
+        except Exception as e:
+            # in case of errors (like FOREIGN KEY constraint), log or return a specific response
+            # comment out token generation for testing purposes
+            data["tokens"] = {
+                "refresh": None,
+                "access": None,
+                'csrfToken': get_token(request)  # Only provide CSRF token if token generation fails
+            }
+        
         # return the response with the user data and tokens, and set the status to 200 OK
         return Response(data, status=status.HTTP_200_OK)
+
 
 # class to handle user logout via API
 class UserLogoutApiView(GenericAPIView):

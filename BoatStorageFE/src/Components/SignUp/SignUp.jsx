@@ -22,10 +22,10 @@ const SignUp = () => {
 
   // state for form data: username, email, password1, and password2 (default as empty strings)
   const [formData, setFormData] = useState({
-    username: '', 
-    email: '', 
-    password1: '', 
-    password2: '', 
+    username: "", 
+    email: "", 
+    password1: "", 
+    password2: "", 
   });
 
   // function to handle form field changes, dynamically updating the formData state
