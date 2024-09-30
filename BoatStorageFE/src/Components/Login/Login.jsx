@@ -120,7 +120,7 @@ const Login = () => {
             <input
               type="password" 
               name="password" 
-              placeholder="Create password"
+              placeholder="Enter password"
               value={formData.password1} 
               onChange={handleChange}
             />

@@ -100,4 +100,85 @@ body {
 .main-content .tab-content p {
   font-size: var(--normalFontSize);
   color: var(--greyText);
+}
+.main-content .tab-content .payment-section {
+  display: flex;
+  padding: 2rem;
+  background-color: var(--bgColor);
+  border-radius: var(--borderRadius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.main-content .tab-content .payment-section .payment-tabs {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+.main-content .tab-content .payment-section .payment-tabs button {
+  background: none;
+  border: 1px solid var(--greyText);
+  color: var(--blackColor);
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.main-content .tab-content .payment-section .payment-tabs button.active {
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
+}
+.main-content .tab-content .payment-section .payment-tabs button:hover {
+  background-color: var(--primaryColorLight);
+}
+.main-content .tab-content .payment-section .payment-section {
+  display: flex;
+  padding: 2rem;
+  background-color: var(--bgColor);
+  border-radius: var(--borderRadius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.main-content .tab-content .payment-section .payment-section .payment-tabs {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0;
+  width: 200px;
+}
+.main-content .tab-content .payment-section .payment-section .payment-tabs button {
+  background: none;
+  border: 1px solid var(--greyText);
+  color: var(--blackColor);
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.main-content .tab-content .payment-section .payment-section .payment-tabs button.active {
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
+}
+.main-content .tab-content .payment-section .payment-section .payment-tabs button:hover {
+  background-color: var(--primaryColorLight);
+}
+.main-content .tab-content .payment-section .payment-section .payment-tab-content {
+  flex-grow: 1;
+  padding: 1rem;
+  background-color: var(--cardColor);
+  border-radius: var(--borderRadius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 1rem;
+}
+.main-content .tab-content .payment-section .payment-section .payment-tab-content h4 {
+  margin-bottom: 1rem;
+}
+.main-content .tab-content .payment-section .payment-section .payment-tab-content button {
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
+  border: none;
+  border-radius: var(--borderRadius);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.main-content .tab-content .payment-section .payment-section .payment-tab-content button:hover {
+  background-color: var(--primaryColorLight);
 }/*# sourceMappingURL=Profile.css.map */

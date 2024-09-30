@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react'; 
 import { useNavigate } from 'react-router-dom'; 
 import './Profile.css'; 
-
+import Aos from 'aos'; 
+import 'aos/dist/aos.css'; 
 import axios from 'axios'; // import axios for API calls
 
 const Profile = () => {
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
 
   // State for user details
   const [user, setUser] = useState({
@@ -14,6 +19,9 @@ const Profile = () => {
 
   // Handle active tab state
   const [activeTab, setActiveTab] = useState('Payments');
+
+  // State for payment section
+  const [paymentTab, setPaymentTab] = useState('Upcoming Payments');
 
   // Mock API call to get user details (can be replaced with actual API)
   useEffect(() => {
@@ -54,9 +62,9 @@ const Profile = () => {
       </header>
 
       {/* Main Content */}
-      <div className="main-content">
-        {/* Tabs for navigation */}
-        <div className="tabs">
+      <div className="main-content" data-aos="fade-up">
+        {/* Tabs for main navigation */}
+        <div className="tabs" data-aos="fade-up">
           <button 
             className={activeTab === 'Payments' ? 'active' : ''} 
             onClick={() => setActiveTab('Payments')}
@@ -88,8 +96,56 @@ const Profile = () => {
           {activeTab === 'Payments' && (
             <div className="payments-tab">
               <h3>Payments</h3>
-              <p>Manage your payment methods and history here.</p>
-              {/* Payment form and options can go here */}
+              <div className="payment-section">
+                <div className="payment-tabs">
+                  <button 
+                    className={paymentTab === 'Upcoming Payments' ? 'active' : ''} 
+                    onClick={() => setPaymentTab('Upcoming Payments')}
+                  >
+                    Upcoming Payments
+                  </button>
+                  <button 
+                    className={paymentTab === 'Make Payment' ? 'active' : ''} 
+                    onClick={() => setPaymentTab('Make Payment')}
+                  >
+                    Make Payment
+                  </button>
+                  <button 
+                    className={paymentTab === 'Payment History' ? 'active' : ''} 
+                    onClick={() => setPaymentTab('Payment History')}
+                  >
+                    Payment History
+                  </button>
+                </div>
+
+                {/* Display tab content based on paymentTab */}
+                <div className="payment-tab-content">
+                  {paymentTab === 'Upcoming Payments' && (
+                    <div className="upcoming-payments-tab">
+                      <h4>Upcoming Payments</h4>
+                      <p>Your next payment is due on [Next Payment Date].</p>
+                      {/* Calendar can be implemented here */}
+                    </div>
+                  )}
+
+                  {paymentTab === 'Make Payment' && (
+                    <div className="make-payment-tab">
+                      <h4>Make Payment</h4>
+                      <p>Select your payment method below.</p>
+                      <button>Pay with Credit Card</button>
+                      <button>Pay with PayPal</button>
+                    </div>
+                  )}
+
+                  {paymentTab === 'Payment History' && (
+                    <div className="payment-history-tab">
+                      <h4>Payment History</h4>
+                      <p>View your past payment transactions here.</p>
+                      {/* Payment history details can be displayed here */}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           )}
 
