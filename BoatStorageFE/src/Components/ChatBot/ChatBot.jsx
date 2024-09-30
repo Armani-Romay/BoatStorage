@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io'; // Import icons
-import axios from 'axios'; // Ensure axios is imported for API calls
 import './ChatBot.css';
+
+import axios from 'axios'; // Ensure axios is imported for API calls
+import Cookies from 'js-cookie';
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false); // State to track if chat is open or closed
@@ -21,11 +23,15 @@ const ChatBot = () => {
       setInput(''); // Clear the input after sending
 
       try {
-        // Send the user input to the chatbot API
-        const response = await axios.post('http://127.0.0.1:8000/chat/', { message: input });
+        const csrfToken = Cookies.get('csrftoken'); // get CSRF token from the cookie
+        // send the user input to the chatbot API
+        const response = await axios.post('http://127.0.0.1:8000/chat/', 
+            { message: input },
+            { headers: { 'X-CSRFToken': csrfToken } }
+        );
         const botResponse = response.data.response; // Assuming the API returns a 'response' field
 
-        // Update the messages array with the bot's response
+        // update the messages array with the bot's response
         setMessages(prevMessages => [
           ...prevMessages,
           { text: input, sender: 'user' },

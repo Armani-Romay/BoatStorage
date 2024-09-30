@@ -61,7 +61,7 @@ const Login = () => {
         const tokens = response.data.tokens; // extract the tokens from the response
         setSuccessMessage("Successfully Signed In!"); // set success message
         localStorage.setItem('userToken', JSON.stringify(tokens)); // store tokens in localStorage for web
-        // navigate("/profile"); // navigate to the profile page after successful login
+        navigate("/profile"); // navigate to the profile page after successful login
       }
     } catch (error) {
       // If there is an error, handle it by checking the response data

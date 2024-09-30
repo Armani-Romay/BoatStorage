@@ -1,77 +1,119 @@
 import React, { useState, useEffect } from 'react'; 
-import { Link, useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom'; 
 import './Profile.css'; 
-
-//video and animation imports
-import Aos from 'aos'; 
-import 'aos/dist/aos.css'; 
 
 import axios from 'axios'; // import axios for API calls
 
 const Profile = () => {
+  const navigate = useNavigate();
 
- // Assuming user's name is stored in state, you can also retrieve it from a global state or backend
- const [user, setUser] = useState({
-    name: 'John Doe', // Replace with dynamic data if available
+  // State for user details
+  const [user, setUser] = useState({
+    name: 'John Doe', // Replace with dynamic data
   });
 
   // Handle active tab state
-  const [activeTab, setActiveTab] = useState('Profile');
+  const [activeTab, setActiveTab] = useState('Payments');
 
   // Mock API call to get user details (can be replaced with actual API)
   useEffect(() => {
-    // You can fetch user details here if needed
+    const fetchUserDetails = async () => {
+      try {
+        const response = await axios.get('/api/user'); // Replace with your API
+        setUser(response.data); // Assuming API returns a user object
+      } catch (error) {
+        console.error('Error fetching user details:', error);
+      }
+    };
+
+    fetchUserDetails();
   }, []);
 
+  // Handle logout functionality
+  const handleLogout = () => {
+    // Clear user session (e.g., remove token, clear state)
+    // Redirect to login or home page
+    navigate('/login'); // Assuming you have a login route
+  };
+
   return (
-    <div className="profile-page">
+    <div className="dashboard-page">
       {/* Top Navbar */}
       <header className="navbar">
         <div className="navbar-content">
-          <h2>Profile</h2>
+          {/* Logout button on the left */}
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+
+          {/* User's name on the right */}
           <div className="user-info">
-            {/* Display the user's name on the top right */}
-            <span>{user.name}</span>
+            <span>Welcome, {user.name}</span>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <div className="profile-content">
+      <div className="main-content">
+        {/* Tabs for navigation */}
         <div className="tabs">
-          {/* Tabs: Profile and Paying */}
           <button 
-            className={activeTab === 'Profile' ? 'active' : ''} 
-            onClick={() => setActiveTab('Profile')}
+            className={activeTab === 'Payments' ? 'active' : ''} 
+            onClick={() => setActiveTab('Payments')}
           >
-            Profile
+            Payments
           </button>
           <button 
-            className={activeTab === 'Paying' ? 'active' : ''} 
-            onClick={() => setActiveTab('Paying')}
+            className={activeTab === 'Account Details' ? 'active' : ''} 
+            onClick={() => setActiveTab('Account Details')}
           >
-            Paying
+            Account Details
+          </button>
+          <button 
+            className={activeTab === 'Spots Available' ? 'active' : ''} 
+            onClick={() => setActiveTab('Spots Available')}
+          >
+            Spots Available
+          </button>
+          <button 
+            className={activeTab === 'Shopping Cart' ? 'active' : ''} 
+            onClick={() => setActiveTab('Shopping Cart')}
+          >
+            Shopping Cart
           </button>
         </div>
 
-        {/* Display tab content based on activeTab */}
+        {/* Container to display content based on active tab */}
         <div className="tab-content">
-          {activeTab === 'Profile' && (
-            <div className="profile-tab">
-              <h3>Welcome, {user.name}!</h3>
-              <p>This is your profile page.</p>
-              {/* You can add more details about the user here */}
+          {activeTab === 'Payments' && (
+            <div className="payments-tab">
+              <h3>Payments</h3>
+              <p>Manage your payment methods and history here.</p>
+              {/* Payment form and options can go here */}
             </div>
           )}
 
-          {activeTab === 'Paying' && (
-            <div className="paying-tab">
-              <h3>Pay for your Subscription</h3>
-              <p>Select your payment method below.</p>
-              {/* Example payment options or form */}
-              <button>Pay with Credit Card</button>
-              <button>Pay with PayPal</button>
-              {/* Add your payment processing logic here */}
+          {activeTab === 'Account Details' && (
+            <div className="account-tab">
+              <h3>Account Details</h3>
+              <p>Update your personal information here.</p>
+              {/* Form to update account details can go here */}
+            </div>
+          )}
+
+          {activeTab === 'Spots Available' && (
+            <div className="spots-tab">
+              <h3>Available Spots</h3>
+              <p>View the available spots for booking or reservation.</p>
+              {/* Display spots data dynamically */}
+            </div>
+          )}
+
+          {activeTab === 'Shopping Cart' && (
+            <div className="cart-tab">
+              <h3>Shopping Cart</h3>
+              <p>Review and checkout items in your cart.</p>
+              {/* Shopping cart details and checkout functionality */}
             </div>
           )}
         </div>
@@ -79,6 +121,5 @@ const Profile = () => {
     </div>
   );
 };
-
 
 export default Profile;

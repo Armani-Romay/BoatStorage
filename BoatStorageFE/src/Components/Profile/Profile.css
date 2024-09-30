@@ -9,7 +9,6 @@
   --greyText: hsl(0, 0%, 51%);
   --inputColor: hsl(330, 12%, 97%);
   --cardColor: hsl(300, 3%, 94%);
-  /* Font and Typography */
   --biggestFontSize: 2.5rem;
   --h1FontSize: 2rem;
   --h2FontSize: 1.25rem;
@@ -18,81 +17,87 @@
   --smallFontSize: 0.813rem;
   --smallestFontSize: 0.75rem;
   --borderRadius: 3rem;
-  /* Global Font */
   --fontFamily: "Montserrat", sans-serif;
 }
 
-.profile-page {
-  font-family: Arial, sans-serif;
+body {
+  font-family: var(--fontFamily);
+  background-color: var(--bgColor);
+  color: var(--blackColor);
+  margin: 0;
+  padding: 0;
 }
-.profile-page .navbar {
-  background-color: #333;
-  color: #fff;
-  padding: 1rem;
+
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
 }
-.profile-page .navbar .navbar-content {
+.navbar .logout-button {
+  background: none;
+  border: none;
+  color: var(--whiteColor);
+  font-size: var(--normalFontSize);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: var(--borderRadius);
+  transition: background-color 0.3s;
+}
+.navbar .logout-button:hover {
+  background-color: var(--primaryColorLight);
+}
+.navbar .user-info {
+  font-size: var(--normalFontSize);
+  font-weight: 600;
+}
+
+.main-content {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.profile-page .navbar .navbar-content h2 {
-  margin: 0;
-}
-.profile-page .navbar .navbar-content .user-info {
-  font-size: 1.2rem;
-}
-.profile-page .navbar .navbar-content .user-info span {
-  font-weight: bold;
-}
-.profile-page .profile-content {
+  flex-direction: column;
+  align-items: center;
   padding: 2rem;
+  background-color: var(--bgColor);
 }
-.profile-page .profile-content .tabs {
+.main-content .tabs {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
 }
-.profile-page .profile-content .tabs button {
-  background-color: #f1f1f1;
-  border: none;
-  padding: 1rem 2rem;
-  cursor: pointer;
+.main-content .tabs button {
   margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--formColor);
+  border: none;
+  border-radius: var(--borderRadius);
+  color: var(--blackColor);
+  font-size: var(--normalFontSize);
+  cursor: pointer;
   transition: background-color 0.3s;
 }
-.profile-page .profile-content .tabs button.active {
-  background-color: #007bff;
-  color: white;
+.main-content .tabs button.active {
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
 }
-.profile-page .profile-content .tabs button:hover {
-  background-color: #ddd;
+.main-content .tabs button:hover {
+  background-color: var(--primaryColorLight);
+  color: var(--whiteColor);
 }
-.profile-page .profile-content .tab-content {
-  text-align: center;
-  padding: 1rem;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+.main-content .tab-content {
+  width: 100%;
+  max-width: 800px;
+  background-color: var(--cardColor);
+  padding: 2rem;
+  border-radius: var(--borderRadius);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.profile-page .profile-content .tab-content .profile-tab h3,
-.profile-page .profile-content .tab-content .paying-tab h3 {
+.main-content .tab-content h3 {
+  font-size: var(--h2FontSize);
   margin-bottom: 1rem;
 }
-.profile-page .profile-content .tab-content .profile-tab p,
-.profile-page .profile-content .tab-content .paying-tab p {
-  margin-bottom: 2rem;
-}
-.profile-page .profile-content .tab-content .paying-tab button {
-  margin-top: 1rem;
-  padding: 0.5rem 2rem;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  transition: background-color 0.3s;
-}
-.profile-page .profile-content .tab-content .paying-tab button:hover {
-  background-color: #0056b3;
+.main-content .tab-content p {
+  font-size: var(--normalFontSize);
+  color: var(--greyText);
 }/*# sourceMappingURL=Profile.css.map */

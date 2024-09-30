@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from ..chatBot.chat import ChatBot  # import your ChatBot class
+from .chat import ChatBot  # import your ChatBot class
 from django.http import JsonResponse
 from django.views import View
 
