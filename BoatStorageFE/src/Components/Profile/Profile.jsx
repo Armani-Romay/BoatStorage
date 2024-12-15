@@ -39,9 +39,9 @@ const Profile = () => {
 
   // Handle logout functionality
   const handleLogout = () => {
-    // Clear user session (e.g., remove token, clear state)
-    // Redirect to login or home page
-    navigate('/login'); // Assuming you have a login route
+    // clear user session (e.g., remove token, clear state)
+    // redirect to login or home page
+    navigate('/login'); 
   };
 
   return (
